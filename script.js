@@ -119,6 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function handlerSubmit(event) {
         event.preventDefault();
 
+        // console.log(this.date.value)
+
         if(!validateTextInput(this.name, 3, 60)) {
             showInputError(this.name, 'Пожалуйста, выберите корректное имя');
         }
@@ -185,9 +187,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     }
 
+
     function convertDate(value) {
         let date = new Date(value);
         let now = new Date();
+
+        date.setHours(now.getHours());
+        date.setMinutes(now.getMinutes());
+
 
         let period = (now.getTime() - date.getTime()) / (1000 * 60 * 60);
 
